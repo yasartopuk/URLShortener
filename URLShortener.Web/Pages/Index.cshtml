@@ -1,0 +1,44 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+<div class="container mt-5">
+    <div class="text-center">
+        <h1 class="display-4">URL Shortener</h1>
+    </div>
+
+    <div class="alert alert-info" role="alert">
+        <p>
+            With this service you can shorten your long URLs. Please enter the original URL in the box below and click the "Shorten" button to get a shortened URL.
+        </p>
+    </div>
+
+    <form method="post">
+        <div class="form-group">
+            <label for="originalUrl">Orijinal URL</label>
+            <input type="text" class="form-control" id="originalUrl" asp-for="OriginalUrl">
+        </div>
+        <button type="submit" class="btn btn-primary mt-1">Shorten</button>
+    </form>
+
+    @if (ViewData["ShortUrl"] != null)
+    {
+        <div class="alert mt-3">
+            <p><strong>Short Code:</strong> @ViewData["ShortCode"]</p>
+            <p><strong>Short Url:</strong> <a href="@ViewData["ShortUrl"]" target="_blank"> @ViewData["ShortUrl"]</a></p>
+        </div>
+    }
+
+    @if (ViewData["ErrorMessage"] != null)
+    {
+        <div class="alert alert-danger mt-3">
+            <p><strong>Hata:</strong> @ViewData["ErrorMessage"]</p>
+        </div>
+    }
+</div>
+
+
+
+
