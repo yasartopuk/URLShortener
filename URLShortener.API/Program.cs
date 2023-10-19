@@ -11,7 +11,8 @@ builder.Services.AddHttpContextAccessor();
 builder.Services.AddScoped<UrlShortenerRepository>();
 builder.Services.AddDbContext<UrlShortenerDbContext>(options =>
 {
-    options.UseInMemoryDatabase(databaseName: "UrlShortenerDb");
+    //options.UseInMemoryDatabase(databaseName: "UrlShortenerDb");
+    options.UseSqlite(@"Data Source=AppData\UrlShortener.db");
 });
 
 var app = builder.Build();

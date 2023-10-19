@@ -6,5 +6,7 @@ public class UrlShortenerDbContext : DbContext
 {
     public DbSet<ShortenedUrl> ShortenedUrls { get; set; }
     public UrlShortenerDbContext(DbContextOptions<UrlShortenerDbContext> options) : base(options)
-    { }
+    {
+        this.Database.EnsureCreated();
+    }
 }
